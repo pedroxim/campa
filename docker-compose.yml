@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  redis:
+    build:
+      context: .
+      dockerfile: ./dockerfile/redis
+
+  elasticsearch:
+    build:
+      context: .
+      dockerfile: ./dockerfile/elasticsearch
+    ports:
+      - 9200:9200
+      - 9300:9300
+  db:
+    build:
+      context: .
+      dockerfile: ./dockerfile/db
+    environment:
+      - MYSQL_DATABASE=yolo
+      - MYSQL_USER=yolo
+      - MYSQL_PASSWORD=yolo
+      - MYSQL_ROOT_PASSWORD=root
+
+  phpmyadmin:
+    build:
+      context: .
+      dockerfile: ./dockerfile/phpmyadmin
+    links:
+      - db
+    ports:
+      - 80:80
+
+  python:
+    build:
+      context: .
+      dockerfile: ./dockerfile/python
+    ports:
+      - "5000:5000"
+    links:
+      - db
+      - elasticsearch
+      - redis

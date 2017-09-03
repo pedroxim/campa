@@ -1,0 +1,4 @@
+FROM mariadb:10
+
+##Copy a template schema to mariadb server
+COPY config/db/schema.sql /docker-entrypoint-initdb.d

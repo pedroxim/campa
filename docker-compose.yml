@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: ./dockerfile/redis
+    container_name: redis
 
   elasticsearch:
     build:
@@ -13,6 +14,8 @@ services:
     ports:
       - 9200:9200
       - 9300:9300
+    container_name: elasticsearch
+
   db:
     build:
       context: .
@@ -22,6 +25,7 @@ services:
       - MYSQL_USER=yolo
       - MYSQL_PASSWORD=yolo
       - MYSQL_ROOT_PASSWORD=root
+    container_name: db
 
   phpmyadmin:
     build:
@@ -29,16 +33,16 @@ services:
       dockerfile: ./dockerfile/phpmyadmin
     links:
       - db
-    ports:
-      - 80:80
+    container_name: phpmyadmin
 
-  python:
+  nginx:
     build:
       context: .
-      dockerfile: ./dockerfile/python
-    ports:
-      - "5000:5000"
+      dockerfile: ./dockerfile/nginx
     links:
-      - db
+      - phpmyadmin
       - elasticsearch
-      - redis
+    ports:
+      - 80:80
+      - 443:443
+    container_name: nginx

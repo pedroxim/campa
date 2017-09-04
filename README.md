@@ -1,25 +1,30 @@
-My-compose
+My-compose over Nginx
 ==============
 
 ## Services deployed:
 
 - Redis
-- Python
 - Elasticsearch
 - Mariadb
 - Phpmyadmin
+- Nginx
 
 ## Quick start
 
 - docker
 - docker-compose
 
-### First launch
+## Configure
+
+To run, you need a valid certificate for multiples services:
+- elasticsearch
+- phpmyadmin
+
+## First launch
 
 ```bash
 $ docker-compose up
 ```
 then open multiple services:
-- http://localhost:5000
-- http://localhost:9200/_plugin/head
-- http://localhost:80
+- https://elasticsearch.domain.com => Elasticsearch
+- https://adminer.domain.com => phpmyadmin

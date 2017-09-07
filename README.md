@@ -28,4 +28,7 @@ then test services deployed:
 - https://adminer.domain.com => phpmyadmin
 
 Create a index example :
-- '$ curl -XPOST https://elasticsearch.domain.com/test/hello -d '{"title":"Hello world"}''
+
+```bash 
+$ curl -XPOST https://elasticsearch.domain.com/test/hello -d '{"title":"Hello world"}'
+

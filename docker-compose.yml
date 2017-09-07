@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: ./dockerfile/redis
+    container_name: redis
 
   elasticsearch:
     build:
@@ -13,6 +14,7 @@ services:
     ports:
       - 9200:9200
       - 9300:9300
+    container_name: elasticsearch
   db:
     build:
       context: .
@@ -22,6 +24,7 @@ services:
       - MYSQL_USER=user
       - MYSQL_PASSWORD=P4SSw0rd
       - MYSQL_ROOT_PASSWORD=root
+    container_name: db
 
   phpmyadmin:
     build:
@@ -31,6 +34,7 @@ services:
       - db
     ports:
       - 80:80
+    container_name: phpmyadmin
 
   python:
     build:
@@ -42,3 +46,4 @@ services:
       - db
       - elasticsearch
       - redis
+    container_name: python

@@ -48,5 +48,5 @@ services:
       - elasticsearch
       - redis
     volumes:
-      - "./config/python/app:/app"
+      - "./config/python:/app"
     container_name: python

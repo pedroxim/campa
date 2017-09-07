@@ -15,7 +15,8 @@ services:
       - 9200:9200
       - 9300:9300
     container_name: elasticsearch
-  db:
+ 
+   db:
     build:
       context: .
       dockerfile: ./dockerfile/db
@@ -46,4 +47,6 @@ services:
       - db
       - elasticsearch
       - redis
+    volumes:
+      - "./config/python/app:/app"
     container_name: python

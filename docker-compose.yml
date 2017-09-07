@@ -16,7 +16,7 @@ services:
       - 9300:9300
     container_name: elasticsearch
  
-   db:
+  db:
     build:
       context: .
       dockerfile: ./dockerfile/db

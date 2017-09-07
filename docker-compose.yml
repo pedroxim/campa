@@ -18,9 +18,9 @@ services:
       context: .
       dockerfile: ./dockerfile/db
     environment:
-      - MYSQL_DATABASE=yolo
-      - MYSQL_USER=yolo
-      - MYSQL_PASSWORD=yolo
+      - MYSQL_DATABASE=doc
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=P4SSw0rd
       - MYSQL_ROOT_PASSWORD=root
 
   phpmyadmin:
